@@ -1,0 +1,18 @@
+const express = require("express");
+const router = require('./routes/router');
+const connection = require('./database/connection');
+
+connection.authenticate().then(() => {
+    console.log("database conected")
+}).catch((err) => {
+    console.log(err);
+});
+
+const app = express();
+
+app.use(express.json())
+app.use('/users',router)
+
+app.listen(3333, () => {
+  console.log("server listening on port 3333!");
+});
