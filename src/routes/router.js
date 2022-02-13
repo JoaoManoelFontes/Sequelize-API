@@ -7,12 +7,12 @@ const router = express.Router();
 
 router.post("/addUser", userController.addUser);
 
-router.delete("/:id",userController.deleteUser);
+router.delete("/delete/:id",userController.deleteUser);
 
 router.get('/getUsers',userController.getUsers);
 
-router.put('/addresses/:userId',addressController.addAddress);
+router.post('/addresses/:userId',addressController.addAddress);
 
-router.get('/addresses/:id', addressController.getAddress)
+router.get('/getAddresses/:id', addressController.getAddress)
 
 module.exports = router;
