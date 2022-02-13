@@ -7,8 +7,9 @@ module.exports = {
       name,
       age,
     });
-    res.json({ user });
+    res.json({ user:user });
   },
+
   async deleteUser(req, res) {
     const isUser = await User.findByPk(req.params.id);
     if (!isUser) {
@@ -21,7 +22,7 @@ module.exports = {
     await User.destroy({ where: { id: req.params.id } });
     return res.status(200).json({
       status: "sucessfuly deleted",
-      "user deleted": userDeleted,
+      user_deleted: userDeleted,
       Users: await User.findAll(),
     });
   },
@@ -29,12 +30,11 @@ module.exports = {
   async getUsers(_, res) {
     User.findAll()
       .then((result) => {
-        res.status(200).json({ data: result });
+        res.status(200).json(result);
       })
       .catch((err) => {
         console.log(err);
       });
   },
 
-  async addAddres(req, res) {},
 };

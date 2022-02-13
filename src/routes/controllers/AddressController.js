@@ -1,14 +1,17 @@
 const Address = require("../../database/models/Address");
 const User = require("../../database/models/User");
+
 module.exports = {
   async addAddress(req, res) {
     const { userId } = req.params;
     const { zipcode, number, street } = req.body;
-    console.log(userId);
+
     const user = await User.findByPk(userId);
 
     if (!user) {
-      return res.json("error");
+      return res
+        .status(400)
+        .json({ error: "usuário não existe", user: await User.findAll() });
     }
 
     const address = await Address.create({
@@ -18,14 +21,17 @@ module.exports = {
       userId,
     });
 
-    return res.status(200).json({ user: user, address: address });
+    return res.json({ user: user, address: address });
   },
   async getAddress(req, res) {
     const { id } = req.params;
     const user = await User.findByPk(id);
     if (!user) {
-      return res.json("error");
+      return res
+        .status(400)
+        .json({ error: "usuário não existe", user: await User.findAll() });
     }
+
     return res.json({
       user: user,
       address: await Address.findAll({ where: { userId: id } }),
