@@ -26,6 +26,6 @@
         <h3>Define</h3>
         <p>Após iniciar a conexão com o banco de dados, use o método define, que recebe primeiramente uma string com o nome da sua table, e depois um objeto com as colunas da tabelas do seu banco de dados</p>
         <br/>
-        <img src="./readmeImg/define.png" alt="criando model com o sequelize.define"/>
+        <img src="./readmeImg/define.png" alt="criando model com o sequelize.define" style="height: 400px;"/>
     </li>
 </ol>
