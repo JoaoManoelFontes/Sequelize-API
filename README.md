@@ -18,3 +18,14 @@
 <p>Após criar e customizar sua migration, use o comando <code>npx sequelize db:migrate</code> para o Sequelize fazer a tarefa que está no arquivo. Se quiser voltar atrás após ter realizado o comando no terminal, use  <code>npx sequelize db:migrate:undo</code> para desfazer as alterações.</p>
 <hr/>
 <p>Depois de ter criado sua table no banco de dados, crie o seu model Sequelize de acordo com a table que você fez. Dentro da pasta database, crie uma pasta models e dentro dela faça seu arquivo js com seu model, e importe ele no arquivo de conexão com o banco de dados e pronto, vai poder usar seu model e todas as funções (<i>findAll(); create();destroy(); findByPk(); ect.</i>) que o Sequelize possibilita.</p>
+<br/>
+<h2>Sequelize model</h2>
+<h3>Existem 2 jeitos de fazer um model:</h3>
+<ol>
+    <li>
+        <h3>Define</h3>
+        <p>Após iniciar a conexão com o banco de dados, use o método define, que recebe primeiramente uma string com o nome da sua table, e depois um objeto com as colunas da tabelas do seu banco de dados</p>
+        <br/>
+        <img src="./readmeImg/define.png" alt="criando model com o sequelize.define"/>
+    </li>
+</ol>
