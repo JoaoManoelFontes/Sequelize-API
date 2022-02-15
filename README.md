@@ -33,4 +33,10 @@
         <br/>
         <img src="./readmeImg/define.png" alt="criando model com o sequelize.define" style="height: 600px;"/>
     </li>
+    <li>
+    <h3>Class Model</h3>
+    <p>crie uma classe que herda de Model (<i>extends</i>) e usa o método init dessa classe, que recebe como primeiro parâmetro um objeto com os atributos da sua table, como em define. E depois desse objeto, recebe a sua conexão com o banco, por isso esse método tem que ter um parâmetro pra receber essa conexão.</p>
+    <br/>
+    <img src="./readmeImg/model_class.png" alt="criando model com a classe Model" style="height: 600px;"/>
+    </li>
 </ol>
