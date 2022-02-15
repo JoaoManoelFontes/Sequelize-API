@@ -28,7 +28,6 @@ module.exports = {
   },
 
   async getUsers(_, res) {
-    const user = await User.findAll();
-    res.status(200).json(result);
+    res.status(200).json(await User.findAll());
   },
 };
