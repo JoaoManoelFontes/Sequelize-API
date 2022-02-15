@@ -7,7 +7,7 @@ module.exports = {
       name,
       age,
     });
-    res.json({ user:user });
+    res.json({ user: user });
   },
 
   async deleteUser(req, res) {
@@ -28,13 +28,7 @@ module.exports = {
   },
 
   async getUsers(_, res) {
-    User.findAll()
-      .then((result) => {
-        res.status(200).json(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const user = await User.findAll();
+    res.status(200).json(result);
   },
-
 };
