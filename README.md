@@ -38,5 +38,6 @@
     <p>crie uma classe que herda de Model (<i>extends</i>) e usa o método init dessa classe, que recebe como primeiro parâmetro um objeto com os atributos da sua table, como em define. E depois desse objeto, recebe a sua conexão com o banco, por isso esse método tem que ter um parâmetro pra receber essa conexão.</p>
     <br/>
     <img src="./readmeImg/model_class.png" alt="criando model com a classe Model" style="height: 600px;"/>
+    <p>Obs: <i>importe essa classe no arquivo connection.js, para chamar o método init passando a conexão, após isso seu model (User) ja vai poder ser usado junto com todas as funções do sequelize</i></p>
     </li>
 </ol>
