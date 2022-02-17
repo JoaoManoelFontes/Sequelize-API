@@ -25,16 +25,15 @@ module.exports = {
   },
   async getAddress(req, res) {
     const { id } = req.params;
-    const user = await User.findByPk(id);
+    const user = await User.findByPk(id, {
+      include: { association: "addresses" },
+    });
     if (!user) {
       return res
         .status(400)
         .json({ error: "usuário não existe", user: await User.findAll() });
     }
 
-    return res.json({
-      user: user,
-      address: await Address.findAll({ where: { userId: id } }),
-    });
+    return res.json({ user });
   },
 };
