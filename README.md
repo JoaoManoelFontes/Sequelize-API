@@ -33,11 +33,29 @@
         <br/>
         <img src="./readmeImg/define.png" alt="criando model com o sequelize.define" style="height: 600px;"/>
     </li>
+    <br/>
     <li>
     <h3>Class Model</h3>
     <p>crie uma classe que herda de Model (<i>extends</i>) e usa o método init dessa classe, que recebe como primeiro parâmetro um objeto com os atributos da sua table, como em define. E depois desse objeto, recebe a sua conexão com o banco, por isso esse método tem que ter um parâmetro pra receber essa conexão.</p>
     <br/>
     <img src="./readmeImg/model_class.png" alt="criando model com a classe Model" style="height: 600px;"/>
+    <br/>
     <p>Obs: <i>importe essa classe no arquivo connection.js, para chamar o método init passando a conexão, após isso seu model (User) ja vai poder ser usado junto com todas as funções do sequelize</i></p>
+    </li>
+</ol>
+<br/>
+<h2>Relacionamentos com Sequelize</h2>
+<h3>Existem 3 tipos de relacionamentos com banco de dados:</h3>
+<br/>
+<ol>
+    <li>
+        <h3>One-to-One (1 para 1)</h3>
+        <p>Ex: uma table users e outra cpfs. Um user só pode <b>possuir</b> 1 cpf, assim como um cpf so pode <b>pertencer</b> a 1 user</p>
+        <br/>
+        <p>No Sequelize, para fazer um relacionamento desse tipo, é preciso criar, na migration da table <i>'cpf'</i>, além das colunas normais, uma coluna <i>'user_id'</i> que vai <b>referenciar</b> a coluna 'id' da tables de usuários, por isso <code>references: { model: "users", key: "id" }</code></p>
+        <br/>
+        <img src="./readmeImg/cpfTable.png" alt="criando table cpf com a referencia para users" style="height: 600px;"/>
+        <br/>
+        <p>Obs:<i> as keys 'onUpdate' e 'onDelete' são importantes para definir o que vai ser feito com o cpf quando o user for mudado ou deletado. Ao botar o 'CASCADE', você está dizendo que tudo que acontecer com o user deve acontecer com o cpf também, então se um usuário for deletado o seu cpf também será. </i></p>
     </li>
 </ol>
