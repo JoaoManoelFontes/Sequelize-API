@@ -15,5 +15,11 @@ module.exports = class User extends Model {
 
   static associate(models) {
     this.hasMany(models.Address, { foreignKey: "userId", as: "addresses" });
+
+    this.belongsToMany(models.Tag, {
+      foreignKey: "userId",
+      through: "usertags",
+      as: "tags",
+    });
   }
 };
