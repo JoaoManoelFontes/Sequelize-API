@@ -57,5 +57,26 @@
         <img src="./readmeImg/cpfTable.png" alt="criando table cpf com a referencia para users" style="height: 600px;"/>
         <br/>
         <p>Obs:<i> as keys 'onUpdate' e 'onDelete' são importantes para definir o que vai ser feito com o cpf quando o user for mudado ou deletado. Ao botar o 'CASCADE', você está dizendo que tudo que acontecer com o user deve acontecer com o cpf também, então se um usuário for deletado o seu cpf também será. </i></p>
+        <br/>
+        <p>Ao construir o model das tables, você deve criar na classe um método <i>associate</i>, onde vai fazer todas as associações com outras tabelas: </p>
+        <br/>
+        <img src="./readmeImg/associateCpf-Users.png" alt="criando associação de 1 para um com a table users" style="height: 200px;"/>
+        <br/>
+        <p>A função <code>belongsTo</code> <i>(pertence á)</i> vai fazer o nosso relacionamento. Como primeiro parâmetro você deve passar o Model que que vai estar associado, então o nosso método vai receber um parâmetro <i>models</i>, que armazena todos os models que estão conectados no seu banco de dados e vamos passar ele no belongsTo seguido do nome do model (nesse caso, como é o model User, passaremos <code>models.User</code> ). Como segundo parâmetro essa função recebe um objeto com as informações da associação: <i>foreignKey</i> que pede o nome da coluna que vai referenciar a outra table, no caso é a 'userId' ; <i>as</i> que pede o nome que vamos dar para essa associação, como ele está referenciando o usuário que tem um cpf vamos chamar de 'user', porém você pode usar qualquer nome nessa chave, só não se esqueça pois vai precisar quando for listar, por exemplo, algum usuário junto com seu cpf.</p>
+        <br/>
+        <p>No model User também deve ser implementado o método associate, porém nesse caso como um usuário <b>possui 1</b> cpf, então em vez do belongsTo usamos o <code>hasOne()</code>. Assim como no primeiro caso ele recebe o <code>models.Cpf</code> que no caso seria o nosso outro model. E também o objeto com  o nome da coluna que está fazendo a ligação entre os 2 models: <code>foreignKey('userId')</code> e o nome que será dado á essa associação que você está criando: <code>as('cpf')</code>.</p>
+        <br/>
+        <p>Logo após fazer a associação nos 2 models, precisamos chamar essa função no arquivo de conexão. Então em <i>connection.js</i>, com o User e o Cpf já importados e inicializados (<code>User.init(connection)</code> e <code>Cpf.init(connection)</code>), chame o método em cada model passando a propriedade do Sequelize que tem todos os models que você conectou: <code>User.associate(connection.models)</code> e <code>Cpf.associate(connection.models)</code></p>
+        <br/>
+        <img src="./readmeImg/connection.png" alt="chamando o método associate para concluir a associação" style="height: 600px;"/>
+        <br/>
+        <p>Para usar a associação que você fez, como em um caso que você precise armazenar um cpf de um usuário, e mostrar o cpf do usuário que o cliente solicitar:</p>
+        <p>Crie uma rota post no express, que recebe pelo body a string Cpf e pela url (<i>params</i>) o id do usuário que o cpf pertence. Logo ápos, no seu controller e com o model Cpf já importado, faça uma função para criar um novo cpf no banco de dados.</p>
+        <br/>
+        <img src="./readmeImg/addCpf.png" alt="criando o controller pra armazenar um cpf" style="height: 600px;"/>
+        <br/>
+        <p>Agora com o seu cpf já armazenado no banco, podemos criar uma rota pra listar o cpf de determinado usuário:</p>
+        <p>Crie uma rota do tipo get que como parâmetro na url recebe o id de um user, faça o controller que pega esse userId e ache esse usuário para pegarmos o seu cpf e retornarmos para o cliente. Para isso usamos o objeto <b>include</b>, que basicamente inclui na busca que eu pedi (no caso a de achar um usuário pelo id) algumas informações a mais, e como a gente precisa do cpf além do user, passamos a propriedade <b>associate</b>. Ela recebe uma string que é o nome da associação que definimos lá no model User na chave <b>as:</b> que no caso foi 'cpf'. Isso faz com que além de retornar os dados do usuário que a gente buscou pelo id, o Sequelize retorna o cpf que está associado á ele. </p>
+        <img src="./readmeImg/getCpf.png" alt="criando o controller pra listar um cpf" style="height: 600px;"/>        
     </li>
 </ol>
