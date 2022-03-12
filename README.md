@@ -6,13 +6,13 @@
 <br/>
 <p align="center">Sumário:</p>
 <p align="center">
-<a href="#functions">Funcionalidades || </a>
+<a href="#functionalities">Funcionalidades || </a>
 <a href="#timeline">Linha do tempo || </a>
 <a href="#model">Model || </a>
 <a href="#association">Associação</a>
 </p>
 <br/>
-<div id="functions">
+<div id="functionalities">
 <h3>Funcionalidades:</h3>
 <ul>
 <li>Criação de usuários com nome e idade</li>
