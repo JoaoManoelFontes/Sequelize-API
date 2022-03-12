@@ -59,4 +59,17 @@ module.exports = {
 
     await user.removeTag(tag);
   },
+  async listTag(req,res){
+
+    const users = await User.findAll({
+      include: {
+        association: "tags",
+        where:{name:req.params.tag},
+        attributes: [],
+        through: { attributes: [] },
+      },
+      attributes: ["name", "age", "id"],
+    })
+    return res.json(users);
+  }
 };
