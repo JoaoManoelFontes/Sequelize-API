@@ -4,15 +4,26 @@
 <p align="right">Readme status: Em construção...</p>
 <hr/>
 <br/>
-<p>Sumário:</p>
-<ul>
-<li><a href="">Funcionalidades</a></li>
-<li><a href="#timeline">Linha do tempo</a></li>
-<li><a href="#model">Model</a></li>
-<li><a href="#association">Associação</a></li>
-</ul>
+<p align="center">Sumário:</p>
+<p align="center">
+<a href="#functions">Funcionalidades || </a>
+<a href="#timeline">Linha do tempo || </a>
+<a href="#model">Model || </a>
+<a href="#association">Associação</a>
+</p>
 <br/>
-
+<div id="functions">
+<h3>Funcionalidades:</h3>
+<ul>
+<li>Criação de usuários com nome e idade</li>
+<li>Listagem e exclusão de usuários</li>
+<li>Adicionar, listar e deletar vários endereços de um usuário</li>
+<li>Marcar os usuários com <i>tags</i></li>
+<li>Deletar tag de um user e listar quais tags tem cada usuário</li>
+</ul>
+</div>
+<hr/>
+<br/>
 <div id="timeline">
 <h2>Linha do tempo...</h2>
 <p>Use  <code> npm init -y </code>  no seu terminal e depois adcione as dependencias para o projeto:<br/>
