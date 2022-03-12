@@ -61,6 +61,7 @@ module.exports = {
   },
   async listTag(req,res){
 
+    const tag = await Tag.findOne({where:{name:req.params.tag}});
     const users = await User.findAll({
       include: {
         association: "tags",
@@ -70,6 +71,11 @@ module.exports = {
       },
       attributes: ["name", "age", "id"],
     })
+
+    if(tag===null){
+      console.log("err");
+      return res.json({error:"Tag inexistente", tags: await Tag.findAll()})
+    }
     return res.json(users);
   }
 };
