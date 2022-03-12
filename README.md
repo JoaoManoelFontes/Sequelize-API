@@ -1,6 +1,19 @@
 <h1>Study-Sequelize</h1>
 <h2>projetos de estudo sobre o ORM Sequelize</h2>
 <br/>
+<p align="right">Readme status: Em construção...</p>
+<hr/>
+<br/>
+<p>Sumário:</p>
+<ul>
+<li><a href="">Funcionalidades</a></li>
+<li><a href="#timeline">Linha do tempo</a></li>
+<li><a href="#model">Model</a></li>
+<li><a href="#association">Associação</a></li>
+</ul>
+<br/>
+
+<div id="timeline">
 <h2>Linha do tempo...</h2>
 <p>Use  <code> npm init -y </code>  no seu terminal e depois adcione as dependencias para o projeto:<br/>
 <code> npm install express mysql2 sequelize sequelize-cli </code> <br/>
@@ -23,7 +36,9 @@
 <br/>
 <h3>Criando o model</h3>
 <p>Depois de ter criado sua table no banco de dados, crie o seu model Sequelize de acordo com a table que você fez. Dentro da pasta database, crie uma pasta models e dentro dela faça seu arquivo js com seu model, e importe ele no arquivo de conexão com o banco de dados e pronto, vai poder usar seu model e todas as funções (<i>findAll(); create();destroy(); findByPk(); ect.</i>) que o Sequelize possibilita.</p>
+</div>
 <br/>
+<div id="model">
 <h2>Sequelize model</h2>
 <h3>Existem 2 jeitos de fazer um model:</h3>
 <ol>
@@ -43,7 +58,9 @@
     <p>Obs: <i>importe essa classe no arquivo connection.js, para chamar o método init passando a conexão, após isso seu model (User) ja vai poder ser usado junto com todas as funções do sequelize</i></p>
     </li>
 </ol>
+</div>
 <br/>
+<div id="association">
 <h2>Relacionamentos com Sequelize</h2>
 <h3>Existem 3 tipos de relacionamentos com banco de dados:</h3>
 <br/>
@@ -79,4 +96,30 @@
         <p>Crie uma rota do tipo get que como parâmetro na url recebe o id de um user, faça o controller que pega esse userId e ache esse usuário para pegarmos o seu cpf e retornarmos para o cliente. Para isso usamos o objeto <b>include</b>, que basicamente inclui na busca que eu pedi (no caso a de achar um usuário pelo id) algumas informações a mais, e como a gente precisa do cpf além do user, passamos a propriedade <b>associate</b>. Ela recebe uma string que é o nome da associação que definimos lá no model User na chave <b>as:</b> que no caso foi 'cpf'. Isso faz com que além de retornar os dados do usuário que a gente buscou pelo id, o Sequelize retorna o cpf que está associado á ele. </p>
         <img src="./readmeImg/getCpf.png" alt="criando o controller pra listar um cpf" style="height: 600px;"/>        
     </li>
+    <li>
+        <h3>One-To-N (um para muitos)</h3>
+        <p>Uma tabela de usuários e uma tabela de casas(endereços), ou seja, cada casa refere-se á um usuário, e um usuário pode ser proprietário de várias casas.</p>
+        <i>Obs: o exemplo está representado nos arquivos acima (table addresses e table users)</i>
+        <p>Ao criar a migration da tabela de endereços, é necessário criar uma coluna nela que vai referenciar a coluna de 'id' do usuário.
+            <code> userId: {
+                type: Sequelize.INTEGER,
+                alowNull: false,
+                references: { model: "users", key: "id" },
+                onUpdate: "CASCADE",
+                onDelete: "CASCADE",
+                },
+            </code>            
+        </p>
+        <i>Coluna 'userId' da tabela de endereços, ela está referenciando a coluna 'id' da table users.</i>
+        <p>Ao definir o model no sequelize, no método associate é preciso usar a função <code>belongsTo()</code>
+        no model address, pois um endereço <b>pertence á</b> um usuário. Já no model users é usado <code>hasMany()</code> pois um usuário <b>tem vários</b> endereços.
+        <h3>Model address:</h3>
+        <img src="./readmeImg/balongsto.png" alt="criando a associação com o user" style="height: 400px;"/>
+        <br/>
+        <h3>Model User:</h3>
+        <img src="./readmeImg/hasmany.png" alt="criando a associação com os endereços" style="height: 400px;"/> 
+        <br/>
+        </p>
+    </li>
 </ol>
+</div>
