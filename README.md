@@ -20,6 +20,7 @@
 <li>Adicionar, listar e deletar vários endereços de um usuário</li>
 <li>Marcar os usuários com <i>tags</i></li>
 <li>Deletar tag de um user e listar quais tags tem cada usuário</li>
+<li>listar todos os usuários que usam uma determinada tag<li>
 </ul>
 </div>
 <hr/>
