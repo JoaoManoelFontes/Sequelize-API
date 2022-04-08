@@ -109,7 +109,7 @@
         <img src="./readmeImg/getCpf.png" alt="criando o controller pra listar um cpf" style="height: 600px;"/>        
     </li>
     <li>
-        <h3>One-To-N (um para muitos)</h3>
+        <h3>One-To-Many (um para muitos)</h3>
         <p>Uma tabela de usuários e uma tabela de casas(endereços), ou seja, cada casa refere-se á um usuário, e um usuário pode ser proprietário de várias casas.</p>
         <i>Obs: o exemplo está representado nos arquivos acima (table addresses e table users)</i>
         <p>Ao criar a migration da tabela de endereços, é necessário criar uma coluna nela que vai referenciar a coluna de 'id' do usuário.
@@ -139,6 +139,10 @@
                 Address.associate(connection.models); <br/>
             </code>
         </p>
+        <p>Para explicar como usar na prática essa associação, dentro dos diretórios <i>src/routes/router.js & src/routes/controllers/AddressController.js</i> há um caso com uma tabela de usuários e uma de endereços (um user tem alguns endereços, que por sua vez pertence a um user)</p>
+    </li>
+    <li>
+        <h3>Many-to-Many (muitos para muitos)</h3>
     </li>
 </ol>
 </div>
