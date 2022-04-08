@@ -113,13 +113,13 @@
         <p>Uma tabela de usuários e uma tabela de casas(endereços), ou seja, cada casa refere-se á um usuário, e um usuário pode ser proprietário de várias casas.</p>
         <i>Obs: o exemplo está representado nos arquivos acima (table addresses e table users)</i>
         <p>Ao criar a migration da tabela de endereços, é necessário criar uma coluna nela que vai referenciar a coluna de 'id' do usuário.
-            <code> userId: {
-                type: Sequelize.INTEGER,
-                alowNull: false,
-                references: { model: "users", key: "id" },
-                onUpdate: "CASCADE",
-                onDelete: "CASCADE",
-                },
+            <code> userId: { <br/>
+                type: Sequelize.INTEGER, <br/>
+                alowNull: false, <br/>
+                references: { model: "users", key: "id" },<br/>
+                onUpdate: "CASCADE", <br/>
+                onDelete: "CASCADE", <br/>
+                }, 
             </code>            
         </p>
         <i>Coluna 'userId' da tabela de endereços, ela está referenciando a coluna 'id' da table users.</i>
@@ -131,6 +131,13 @@
         <h3>Model User:</h3>
         <img src="./readmeImg/hasmany.png" alt="criando a associação com os endereços" style="height: 400px;"/> 
         <br/>
+        </p>
+        <p>
+            Assim como no relacionamento de 1 para 1, é preciso chamar o método associate no arquivo de conexão, então em <i>connection.js</i> iremos chamar o método assim:
+            <code> 
+                User.associate(connection.models); <br/>
+                Address.associate(connection.models); <br/>
+            </code>
         </p>
     </li>
 </ol>
