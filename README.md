@@ -142,7 +142,7 @@
         <p>Para explicar como usar na prática essa associação, dentro dos diretórios <i>src/routes/router.js & src/routes/controllers/AddressController.js</i> há um caso com uma tabela de usuários e uma de endereços (um user tem alguns endereços, que por sua vez pertence a um user)</p>
     </li>
     <li>
-        <h3>Many-to-Many (muitos para muitos)</h3>
-    </li>
+        <h3>Many-to-Many ()</h3>
+    </li> 
 </ol>
 </div>
