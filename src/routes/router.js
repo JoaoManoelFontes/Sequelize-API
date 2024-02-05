@@ -16,6 +16,6 @@ router.get("/getAddresses/:id", addressController.getAddress);
 router.post("/tags/:userId", tagController.addTag);
 router.get("/tags/:userId", tagController.getTags);
 router.delete("/tags/:userId", tagController.removeTag);
-router.get("/getTag/:tag",tagController.listTag)
+router.get("/getTag/:tag", tagController.listTag);
 
 module.exports = router;

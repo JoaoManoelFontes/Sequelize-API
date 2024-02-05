@@ -1,5 +1,4 @@
 *.http
 node_modules
-package*.json
 .vscode
 .env

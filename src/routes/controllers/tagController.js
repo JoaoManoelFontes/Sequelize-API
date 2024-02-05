@@ -59,23 +59,23 @@ module.exports = {
 
     await user.removeTag(tag);
   },
-  async listTag(req,res){
-
-    const tag = await Tag.findOne({where:{name:req.params.tag}});
+  async listTag(req, res) {
+    const tagParam = req.params.tag;
+    const tag = await Tag.findOne({ where: { name: tagParam } });
     const users = await User.findAll({
       include: {
         association: "tags",
-        where:{name:req.params.tag},
+        where: { name: tagParam },
         attributes: [],
         through: { attributes: [] },
       },
       attributes: ["name", "age", "id"],
-    })
+    });
 
-    if(tag===null){
+    if (tag === null) {
       console.log("err");
-      return res.json({error:"Tag inexistente", tags: await Tag.findAll()})
+      return res.json({ error: "Tag inexistente", tags: await Tag.findAll() });
     }
     return res.json(users);
-  }
+  },
 };
